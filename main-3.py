@@ -1,6 +1,11 @@
 import gymnasium as gym
 import numpy as np
 from collections import deque
+from dezero import Model
+from dezero import optimizers
+import dezero.functions as F
+import dezero.layers as L
+import copy
 
 class ReplayBuffer:
     def __init__(self, buffer_size, batch_size):
@@ -31,7 +36,6 @@ replay_bufffer = ReplayBuffer(buffer_size=10000, batch_size=32)
 for episode in range(10):
     state, info = env.reset()
     done = False
-
 
     while not done:
         env.render()
